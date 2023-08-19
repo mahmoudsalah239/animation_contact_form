@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact me</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail();reset(); return false ;">
+            <div class="row">
+
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label for="name"> <i class="fa-solid fa-user  "></i> &nbsp;Your Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="phone" required>
+                    <label for="phone"> <i class="fa-solid fa-square-phone-flip "></i>&nbsp; phone
+                        No. </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" id="email" required>
+                <label for="email"><i class="fa-solid fa-envelope"></i>&nbsp; Email id</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="subject" required>
+                <label for="subject"><i class="fa-solid fa-envelope"></i>&nbsp; subject </label>
+            </div>
+            <div class="form-group" required>
+                <textarea name="msg" id="msg" cols="30" rows="10" required></textarea>
+                <label for="msg"><i class="fa-solid fa-comment"></i> &nbsp;User message</label>
+            </div>
+
+            <button type="submit"> send <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+
+
+        function sendEmail() {
+
+            Email.send({
+                SecureToken: "4f0eda9c-32bd-4220-baab-4c7f09bd6b5a",
+                To: 'mamosalah239@gmail.com',
+                From: "mamosalah239@gmail.com",
+                Subject: `This is the subject`,
+                Body: `name ${document.getElementById("name").value}  
+                <br> email ${document.getElementById("email").value}
+                 <br>phone ${document.getElementById("phone").value}
+                 <br> ${document.getElementById("msg").value}`
+            }).then(
+                message => alert(message)
+            );
+        }
+    </script>
+
+</body>
+
+</html>
